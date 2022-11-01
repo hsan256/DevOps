@@ -110,6 +110,30 @@ pipeline {
           }
 
     }
+
+    post{
+
+            success {
+                mail to: "hassen.trabelsi@esprit.tn",
+                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n, More info at: ${env.BUILD_URL}",
+                from: "hassen.trabelsi@esprit.tn",
+                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+            }
+
+            failure{
+                mail to: "hassen.trabelsi@esprit.tn",
+                subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+                from: "hassen.trabelsi@esprit.tn",
+                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+            }
+
+            changed{
+                mail to: "hassen.trabelsi@esprit.tn",
+                subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+                from: "hassen.trabelsi@esprit.tn",
+                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+            }
+        }
 }
 
 
