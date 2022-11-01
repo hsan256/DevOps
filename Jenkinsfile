@@ -8,8 +8,7 @@ pipeline{
             steps {
                 echo 'Pulling From Github...'
                 git branch: 'main', 
-                url: 'https://github.com/hsan256/DevOps'
-                credentialsId: 
+                credentialsId: git credentialsId: 'db8f361d-31ac-4ec3-9527-ff2b75b4ef09', url: 'https://github.com/hsan256/DevOps.git'
             }
             
         }           
