@@ -1,5 +1,9 @@
 pipeline{
     agent any
+    tools {
+        jdk 'JAVA_HOME'
+        maven 'M2_HOME'
+    }
 
     stages{
 
@@ -12,28 +16,40 @@ pipeline{
                 url: 'https://github.com/hsan256/DevOps.git'
             }
             
-        }           
+        }   
+
+        stage ('Check Tools Initializing') {
+            steps {
+                sh 'java --version'
+                sh 'mvn --version'
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+        }        
       
         stage('Clean'){
             steps {
+                sh 'echo "Clean the Project is processing ...."'
                 sh 'mvn clean '
             }
             
         }
         
-        stage('Compile'){
+        /*stage('Compile'){
             steps {
                 sh 'mvn compile  -DskipTests'
             }
             
-        }
+        }*/
         
         
-        /* stage('UNIT test'){
+        stage('UNIT test'){
             steps{
                 sh 'mvn test'
             }
-        }*/
+        }
 
         /*stage('SonarQube Analysis'){
             steps {
