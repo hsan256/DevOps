@@ -14,11 +14,12 @@ pipeline{
             
         }           
       
-        stage('Clean'){
+        stage('Maven Package') {
             steps {
-                sh 'mvn clean '
+                sh "chmod +x mvnw "
+                sh "./mvnw package"
+                
             }
-            
         }
         
         stage('Compile'){
