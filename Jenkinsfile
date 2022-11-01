@@ -8,6 +8,7 @@ pipeline{
             steps {
                 echo 'Pulling From Github...'
                 git branch: 'main', 
+                credentialsId: 'jenkins', 
                 url: 'https://github.com/hsan256/DevOps.git'
             }
             
@@ -46,14 +47,10 @@ pipeline{
         }*/
         
         
-        
-        
         /*stage('Nexus'){
             steps{
                 sh 'mvn deploy -DskipTests'
             }
         }*/
-        
-
     }
 }
