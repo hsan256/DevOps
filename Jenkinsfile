@@ -2,11 +2,11 @@ import java.text.SimpleDateFormat
 pipeline {
     agent any
 
-     environment {
-            registry = "omardrissi/devops-project"
-            registryCredential = 'dckr_pat_NX_qTIaloGguDSY22Ki8Jk04CJo'
-            dockerImage = ''
-     }
+    //  environment {
+    //         registry = "omardrissi/devops-project"
+    //         registryCredential = 'dckr_pat_NX_qTIaloGguDSY22Ki8Jk04CJo'
+    //         dockerImage = ''
+    //  }
 
     stages {
 
@@ -75,24 +75,24 @@ pipeline {
                }
          }*/
 
-          stage('DOCKER COMPOSE') {
-                steps {
-                            sh 'docker-compose up -d --build'
-                }
-          }
+        //   stage('DOCKER COMPOSE') {
+        //         steps {
+        //                 sh 'docker-compose up -d --build'
+        //         }
+        //   }
 
-          stage("nexus deploy"){
-               steps{
-                       sh 'mvn  deploy'
-               }
-          }
+        //   stage("nexus deploy"){
+        //        steps{
+        //                sh 'mvn  deploy'
+        //        }
+        //   }
 
-          stage('MVN SONARQUBE'){
+        //   stage('MVN SONARQUBE'){
 
-                steps{
-                          sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
-                }
-          }
+        //         steps{
+        //                   sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+        //         }
+        //   }
           stage("Test JUnit /Mockito"){
                 steps {
                             sh 'mvn test'
@@ -104,23 +104,23 @@ pipeline {
     post{
 
             success {
-                mail to: "hassen.trabelsi@esprit.tn",
+                mail to: "hassan.trabelsi1999@gmail.com",
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n, More info at: ${env.BUILD_URL}",
-                from: "hassen.trabelsi@esprit.tn",
+                from: "hassan.trabelsi1999@gmail.com",
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
             }
 
             failure{
-                mail to: "hassen.trabelsi@esprit.tn",
+                mail to: "hassan.trabelsi1999@gmail.com",
                 subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
-                from: "hassen.trabelsi@esprit.tn",
+                from: "hassan.trabelsi1999@gmail.com",
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
             }
 
             changed{
-                mail to: "hassen.trabelsi@esprit.tn",
+                mail to: "hassan.trabelsi1999@gmail.com",
                 subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
-                from: "hassen.trabelsi@esprit.tn",
+                from: "hassan.trabelsi1999@gmail.com",
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
             }
         }
