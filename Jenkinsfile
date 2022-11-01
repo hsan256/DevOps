@@ -1,72 +1,44 @@
-pipeline{
-    agent any
-    tools {
-        jdk 'JAVA_HOME'
-        maven 'M2_HOME'
+pipeline {
+  agent any
+  tools {
+    maven 'M2_HOME'
+  }
+
+  stages {
+
+    stage('preparation : start sonar, nexus, local mysql') {
+      steps {
+        sh "docker start bfa"
+        sh "docker start 188"
+        sh "docker start 8a8"
+      }
     }
 
-    stages{
-
-
-        stage('Cloning from GitHub') {
-            steps {
+    stage('Getting project from Git') {
+      steps {
                 echo 'Pulling From Github...'
                 git branch: 'main', 
                 credentialsId: 'jenkins', 
                 url: 'https://github.com/hsan256/DevOps.git'
             }
-            
-        }   
-
-        stage ('Check Tools Initializing') {
-            steps {
-                sh 'java --version'
-                sh 'mvn --version'
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
-            }
-        }        
-      
-        stage('Clean'){
-            steps {
-                sh 'echo "Clean the Project is processing ...."'
-                sh 'mvn clean '
-            }
-            
-        }
-        
-        /*stage('Compile'){
-            steps {
-                sh 'mvn compile  -DskipTests'
-            }
-            
-        }*/
-        
-        
-        stage('UNIT test'){
-            steps{
-                sh 'mvn test'
-            }
-        }
-
-        /*stage('SonarQube Analysis'){
-            steps {
-                sh """mvn sonar:sonar -DskipTests \
-                        -Dsonar.language=java \
-                        
-                        
-                """
-            }
-            
-        }*/
-        
-        
-        /*stage('Nexus'){
-            steps{
-                sh 'mvn deploy -DskipTests'
-            }
-        }*/
     }
+
+    stage('Cleaning the project') {
+      steps {
+        sh "mvn -B -DskipTests clean  "
+      }
+    }
+
+    stage('Artifact Construction') {
+      steps {
+        sh "mvn -B -DskipTests package "
+      }
+    }
+
+    stage('Unit Tests') {
+      steps {
+        sh "mvn test "
+      }
+    }
+
 }
