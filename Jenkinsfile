@@ -1,4 +1,3 @@
-import java.text.SimpleDateFormat
 pipeline {
     agent any
 
@@ -33,13 +32,13 @@ pipeline {
 
         stage('MVN PACKAGE'){
               steps{
-                  sh  'mvn package'
+                  sh 'mvn package'
               }
         }
 
         /* stage('Ansible'){
                steps{
-                          sh  'ansible-playbook -i hosts.yml ansible-playbook.yml'
+                        sh  'ansible-playbook -i hosts.yml ansible-playbook.yml'
                }
 
          }*/
@@ -95,14 +94,13 @@ pipeline {
         //   }
           stage("Test JUnit /Mockito"){
                 steps {
-                            sh 'mvn test'
+                        sh 'mvn test'
                 }
           }
 
     }
 
     post{
-
             success {
                 mail to: "hassan.trabelsi1999@gmail.com",
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n, More info at: ${env.BUILD_URL}",
