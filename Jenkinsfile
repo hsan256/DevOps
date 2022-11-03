@@ -43,24 +43,24 @@ pipeline {
 
          }*/
 
-        // stage('Build docker image'){
-        //     steps{
-        //         script{
-        //             sh 'docker build -t hassan1999/docker-spring-boot .'
-        //         }
-        //     }
-        // }
+        stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t hassan1999/docker-spring-boot .'
+                }
+            }
+        }
 
-        // stage('Push docker image'){
-        //  steps{
-        //      script{
-        //          withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-        //          sh 'docker login -u hassan1999 -p ${dockerhubpwd}'
-        //         }
-        //         sh 'docker push hassan1999/docker-spring-boot'
-        //      }
-        //  }
-        // }
+        stage('Push docker image'){
+         steps{
+             script{
+                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                 sh 'docker login -u hassan1999 -p ${dockerhubpwd}'
+                }
+                sh 'docker push hassan1999/docker-spring-boot'
+             }
+         }
+        }
 
 
         //  stage('Deploy our image') {
@@ -77,7 +77,7 @@ pipeline {
         //        steps {
         //                  sh "docker rmi $registry:$BUILD_NUMBER"
         //        }
-        //  }*/
+        //  }
 
         //   stage('DOCKER COMPOSE') {
         //         steps {
