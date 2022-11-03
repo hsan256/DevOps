@@ -82,7 +82,7 @@ pipeline {
 
           stage("nexus deploy"){
                steps{
-                       sh 'mvn clean package deploy:deploy-file -DgroupId=com.esprit.examen -DartifactId=tpAchatProject -Dversion=4.0-SNAPSHOT -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://@192.168.2.18:8081/repository/maven-releases/ -Dfile=target/tpAchatProject-4.0-SNAPSHOT.jar'
+                       sh 'mvn deploy'
                }
           }
 
