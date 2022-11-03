@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     //  environment {
-    //         registry = "hassan1999/devops"
+    //         registry = "hassan1999/docker-spring-boot"
     //         registryCredential = 'dockerhub'
     //         dockerImage = ''
     //  }
@@ -46,15 +46,20 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t hassan1999/devops .'
+                    sh 'docker build -t hassan1999/docker-spring-boot .'
                 }
             }
         }
 
-        /*stage('Docker images'){
-               steps{
-                        sh 'docker images'
-               }
+        stage('Push docker image'){
+         steps{
+             script{
+                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                 sh 'docker login -u hassan1999 -p ${dockerhubpwd}'
+                }
+                sh 'docker push hassan1999/docker-spring-boot'
+             }
+         }
         }
 
 
