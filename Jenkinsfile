@@ -1,11 +1,11 @@
 pipeline {
     agent any
 
-     environment {
-            registry = "hassan1999/devops"
-            registryCredential = 'dockerhub'
-            dockerImage = ''
-     }
+    //  environment {
+    //         registry = "hassan1999/devops"
+    //         registryCredential = 'dockerhub'
+    //         dockerImage = ''
+    //  }
 
     stages {
 
@@ -24,17 +24,17 @@ pipeline {
             }
         }
 
-        // stage('MVN COMPILE'){
-        //     steps{
-        //         sh  'mvn compile'
-        //     }
-        // }
+        stage('MVN COMPILE'){
+            steps{
+                sh  'mvn compile'
+            }
+        }
 
-        // stage('MVN PACKAGE'){
-        //       steps{
-        //           sh 'mvn package'
-        //       }
-        // }
+        stage('MVN PACKAGE'){
+              steps{
+                  sh 'mvn package'
+              }
+        }
 
         /* stage('Ansible'){
                steps{
@@ -43,7 +43,7 @@ pipeline {
 
          }*/
 
-        stage('Building our image') {
+        /*stage('Building our image') {
                steps{
                         script {
                             dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -72,7 +72,7 @@ pipeline {
                steps {
                          sh "docker rmi $registry:$BUILD_NUMBER"
                }
-         }
+         }*/
 
         //   stage('DOCKER COMPOSE') {
         //         steps {
