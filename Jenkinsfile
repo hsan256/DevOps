@@ -18,7 +18,7 @@ pipeline {
             }
         }
 
-        stage('MVN CLEAN'){
+        /*stage('MVN CLEAN'){
             steps{
                 sh  'mvn clean'
             }
@@ -34,7 +34,7 @@ pipeline {
               steps{
                   sh 'mvn package'
               }
-        }
+        }*/
 
         /* stage('Ansible'){
                steps{
@@ -43,15 +43,15 @@ pipeline {
 
          }*/
 
-        /*stage('Building our image') {
-               steps{
-                        script {
-                            dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                        }
-               }
+        stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t hassan1999/devops .'
+                }
+            }
         }
 
-        stage('Docker images'){
+        /*stage('Docker images'){
                steps{
                         sh 'docker images'
                }
@@ -93,11 +93,11 @@ pipeline {
         //         }
         //   }
 
-          stage("Test JUnit /Mockito"){
-                steps {
-                        sh 'mvn test'
-                }
-          }
+        //   stage("Test JUnit /Mockito"){
+        //         steps {
+        //                 sh 'mvn test'
+        //         }
+        //   }
 
     }
 
