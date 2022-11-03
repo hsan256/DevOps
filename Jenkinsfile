@@ -18,23 +18,23 @@ pipeline {
             }
         }
 
-        /*stage('MVN CLEAN'){
+        stage('MVN CLEAN'){
             steps{
                 sh  'mvn clean'
             }
         }
 
-        stage('MVN COMPILE'){
-            steps{
-                sh  'mvn compile'
-            }
-        }
+        // stage('MVN COMPILE'){
+        //     steps{
+        //         sh  'mvn compile'
+        //     }
+        // }
 
-        stage('MVN PACKAGE'){
-              steps{
-                  sh 'mvn package'
-              }
-        }*/
+        // stage('MVN PACKAGE'){
+        //       steps{
+        //           sh 'mvn package'
+        //       }
+        // }
 
         /* stage('Ansible'){
                steps{
@@ -93,11 +93,11 @@ pipeline {
         //         }
         //   }
 
-          /*stage("Test JUnit /Mockito"){
+          stage("Test JUnit /Mockito"){
                 steps {
                         sh 'mvn test'
                 }
-          }*/
+          }
 
     }
 
