@@ -1,11 +1,11 @@
 pipeline {
     agent any
 
-    //  environment {
-    //         registry = "omardrissi/devops-project"
-    //         registryCredential = 'dckr_pat_NX_qTIaloGguDSY22Ki8Jk04CJo'
-    //         dockerImage = ''
-    //  }
+     environment {
+            registry = "hassan1999/devops"
+            registryCredential = 'dockerhub'
+            dockerImage = ''
+     }
 
     stages {
 
@@ -18,7 +18,7 @@ pipeline {
             }
         }
 
-        stage('MVN CLEAN'){
+        /*stage('MVN CLEAN'){
             steps{
                 sh  'mvn clean'
             }
@@ -34,7 +34,7 @@ pipeline {
               steps{
                   sh 'mvn package'
               }
-        }
+        }*/
 
         /* stage('Ansible'){
                steps{
@@ -43,7 +43,7 @@ pipeline {
 
          }*/
 
-        /*stage('Building our image') {
+        stage('Building our image') {
                steps{
                         script {
                             dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -72,7 +72,7 @@ pipeline {
                steps {
                          sh "docker rmi $registry:$BUILD_NUMBER"
                }
-         }*/
+         }
 
         //   stage('DOCKER COMPOSE') {
         //         steps {
@@ -93,11 +93,11 @@ pipeline {
         //         }
         //   }
 
-          stage("Test JUnit /Mockito"){
+          /*stage("Test JUnit /Mockito"){
                 steps {
                         sh 'mvn test'
                 }
-          }
+          }*/
 
     }
 
