@@ -80,18 +80,18 @@ pipeline {
         //         }
         //   }
 
-          stage("nexus deploy"){
-               steps{
-                       sh 'mvn deploy'
-               }
-          }
+        //   stage("nexus deploy"){
+        //        steps{
+        //                sh 'mvn deploy'
+        //        }
+        //   }
 
-          stage('MVN SONARQUBE'){
+        //   stage('MVN SONARQUBE'){
 
-                steps{
-                        sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=jenkins'
-                }
-          }
+        //         steps{
+        //                 sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=jenkins'
+        //         }
+        //   }
 
           stage("Test JUnit /Mockito"){
                 steps {
