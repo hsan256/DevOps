@@ -43,7 +43,7 @@ pipeline {
 
          }*/
 
-        stage('Build docker image'){
+        /*stage('Build docker image'){
             steps{
                 script{
                     sh 'docker build -t hassan1999/docker-spring-boot .'
@@ -60,30 +60,13 @@ pipeline {
                 sh 'docker push hassan1999/docker-spring-boot'
              }
          }
-        }
+        }*/
 
-
-        //  stage('Deploy our image') {
-        //        steps {
-        //                 script {
-        //                     docker.withRegistry( '', registryCredential ) {
-        //                         dockerImage.push()
-        //                     }
-        //                 }
-        //        }
-        //  }
-
-        //  stage('Cleaning up') {
-        //        steps {
-        //                  sh "docker rmi $registry:$BUILD_NUMBER"
-        //        }
-        //  }
-
-        //   stage('DOCKER COMPOSE') {
-        //         steps {
-        //                 sh 'docker-compose up -d --build'
-        //         }
-        //   }
+          stage('DOCKER COMPOSE') {
+                steps {
+                        sh 'docker-compose up -d --build'
+                }
+          }
 
         //   stage("nexus deploy"){
         //        steps{
