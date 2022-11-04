@@ -18,7 +18,7 @@ pipeline {
             }
         }
 
-        /*stage('MVN CLEAN'){
+        stage('MVN CLEAN'){
             steps{
                 sh  'mvn clean'
             }
@@ -34,7 +34,7 @@ pipeline {
               steps{
                   sh 'mvn package'
               }
-        }*/
+        }
 
         /* stage('Ansible'){
                steps{
