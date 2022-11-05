@@ -24,6 +24,7 @@ import com.esprit.examen.repositories.FournisseurRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @ExtendWith(MockitoExtension.class)
 public class FournisseurServiceMokitoTest {
 
