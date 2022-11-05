@@ -12,23 +12,23 @@ pipeline {
             }
         }
 
-        // stage('MVN CLEAN'){
-        //     steps{
-        //         sh  'mvn clean'
-        //     }
-        // }
+        stage('MVN CLEAN'){
+            steps{
+                sh  'mvn clean'
+            }
+        }
 
-        // stage('MVN COMPILE'){
-        //     steps{
-        //         sh  'mvn compile'
-        //     }
-        // }
+        stage('MVN COMPILE'){
+            steps{
+                sh  'mvn compile'
+            }
+        }
 
-        // stage('MVN PACKAGE'){
-        //       steps{
-        //           sh 'mvn package -DskipTests=true'
-        //       }
-        // }
+        stage('MVN PACKAGE'){
+              steps{
+                  sh 'mvn package -DskipTests=true'
+              }
+        }
 
         /* stage('Ansible'){
                steps{
@@ -56,30 +56,30 @@ pipeline {
          }
         }*/
 
-        //   stage('DOCKER COMPOSE') {
-        //         steps {
-        //                 sh 'docker-compose up -d --build'
-        //         }
-        //   }
+          stage('DOCKER COMPOSE') {
+                steps {
+                        sh 'docker-compose up -d --build'
+                }
+          }
 
-        //   stage("nexus deploy"){
-        //        steps{
-        //                sh 'mvn deploy'
-        //        }
-        //   }
+          stage("nexus deploy"){
+               steps{
+                       sh 'mvn deploy'
+               }
+          }
 
-        //   stage('MVN SONARQUBE'){
+          stage('MVN SONARQUBE'){
 
-        //         steps{
-        //                 sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=jenkins'
-        //         }
-        //   }
+                steps{
+                        sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=jenkins'
+                }
+          }
 
-        //   stage("Test JUnit / Mockito"){
-        //         steps {
-        //                 sh 'mvn test'
-        //         }
-        //   }
+          stage("Test JUnit / Mockito"){
+                steps {
+                        sh 'mvn test'
+                }
+          }
 
     }
 
