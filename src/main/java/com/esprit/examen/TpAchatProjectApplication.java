@@ -28,6 +28,6 @@ public class TpAchatProjectApplication {
 
 	@GetMapping("/")
 	public String home(){
-		return "Welcome";
+		return "Welcome To Gestion Achat";
 	}
 }

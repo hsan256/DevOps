@@ -36,12 +36,12 @@ pipeline {
               }
         }
 
-        stage('Ansible'){
+        /* stage('Ansible'){
                steps{
                         sh  'ansible-playbook -i hosts.yml ansible-playbook.yml'
                }
 
-         }
+         }*/
 
         /*stage('Build docker image'){
             steps{
@@ -81,11 +81,11 @@ pipeline {
         //         }
         //   }
 
-        //   stage("Test JUnit / Mockito"){
-        //         steps {
-        //                 sh 'mvn test'
-        //         }
-        //   }
+          stage("Test JUnit / Mockito"){
+                steps {
+                        sh 'mvn test'
+                }
+          }
 
     }
 
