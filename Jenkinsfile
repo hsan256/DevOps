@@ -3,14 +3,14 @@ pipeline {
 
     stages {
 
-        // stage('Checkout GIT') {
-        //     steps {
-        //         echo 'Pulling From Github...'
-        //         git branch: 'main', 
-        //         credentialsId: 'jenkins', 
-        //         url: 'https://github.com/hsan256/DevOps.git'
-        //     }
-        // }
+        stage('Checkout GIT') {
+            steps {
+                echo 'Pulling From Github...'
+                git branch: 'main', 
+                credentialsId: 'jenkins', 
+                url: 'https://github.com/hsan256/DevOps.git'
+            }
+        }
 
         // stage('MVN CLEAN'){
         //     steps{
