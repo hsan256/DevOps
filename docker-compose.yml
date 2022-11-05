@@ -1,32 +1,20 @@
-version: '3.7'
-
 services:
   mysqldb:
     container_name: mysqldb
-    image: mysql:5.7
-    restart: always
+    image: mysql:8
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: tpachato
-      MYSQL_ROOT: root
-      MYSQL_PASSWORD: root
-      MYSQL_HOST: mysqldb
     ports:
-      - 3306:3306
+      - "3306:3306"
     volumes:
-      - /home/mysql/data:/var/lib/mysql --user 1000
+      - /home/mysql/data:/var/lib/mysql
 
   spring_app:
-   image: hassan1999/docker-spring-boot
-   container_name: docker-spring-boot
-   ports:
-    - 8089:8089
-   environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/tpachato?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_PASSWORD: root
-      MYSQL_DATABASE: tpachato
-   restart: on-failure
-   links:
+    image: hassan1999/docker-spring-boot
+    container_name: docker-spring-boot
+    restart: on-failure
+    ports:
+      - 8089:8089
+    depends_on:
       - mysqldb
