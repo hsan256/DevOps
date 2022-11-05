@@ -1,12 +1,6 @@
 pipeline {
     agent any
 
-    //  environment {
-    //         registry = "hassan1999/docker-spring-boot"
-    //         registryCredential = 'dockerhub'
-    //         dockerImage = ''
-    //  }
-
     stages {
 
         stage('Checkout GIT') {
