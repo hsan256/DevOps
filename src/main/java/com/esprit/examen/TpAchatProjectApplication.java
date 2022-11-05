@@ -22,14 +22,12 @@ public class TpAchatProjectApplication {
 		return new ModelMapper();
 	}
 
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(TpAchatProjectApplication.class, args);
 }
 
 	@GetMapping("/")
 	public String home(){
-		return "Welcome Home new mahdi change vendredi";
+		return "Welcome";
 	}
 }
