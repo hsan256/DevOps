@@ -75,18 +75,4 @@ public class FournisseurServiceMokitoTest {
         System.out.println("Fournisseur added With Mockito");
     }
 
-    @DisplayName("Updating Fournisseur...!")
-    @Test
-    public void EditFournisseurTest() {
-        Fournisseur pedit = new Fournisseur();
-        pedit.setIdFournisseur(3L);
-        pedit.set(false);
-        Reglement new_pedit = new Reglement();
-        new_pedit.setPayee(true);
-        Mockito.lenient().when(pr.findById(pedit.getIdReglement())).thenReturn(Optional.of(pedit));
-        //assertEquals(pedit, psi.updateProduit(new_pedit) );
-        pedit = psi.updateReglement(new_pedit);
-        log.info("updated ==> " + pedit.toString());
-        verify(pr).save(pedit);
-    }
 }
