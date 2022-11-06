@@ -89,28 +89,4 @@ public class FournisseurServiceMokitoTest {
         log.info("updated ==> " + pedit.toString());
         verify(pr).save(pedit);
     }
-    @DisplayName("Adding reglement...!")
-    @Test
-    public void AddProductTest() {
-        Produit produit = new Produit();
-        produit.setLibelleProduit("test");
-        Mockito.lenient().when(pr.save(produit)).thenReturn(produit);
-        Produit newp = psi.addProduit(produit);
-        assertEquals(produit.getLibelleProduit(), newp.getLibelleProduit());
-        verify(pr).save(produit);
-        log.info("Added ==> " + produit.toString());
-    }
-
-    @DisplayName("Deleting product...!")
-    @Test
-    public void DeleteTest() {
-        Produit p = new Produit();
-        p.setLibelleProduit("libelle");
-        p.setIdProduit((long) 3);
-        Long pid = p.getIdProduit();
-        Mockito.lenient().when(pr.findById(pid)).thenReturn(Optional.of(p));
-        psi.deleteProduit(pid);
-        verify(pr).deleteById(pid);
-        log.info("Deleted ==> " + pid.toString());
-    }  
 }
