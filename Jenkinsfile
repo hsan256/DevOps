@@ -37,7 +37,7 @@ pipeline {
 
          }*/
 
-        /*stage('Build docker image'){
+        stage('Build docker image'){
             steps{
                 script{
                     sh 'docker build -t hassan1999/docker-spring-boot .'
@@ -54,7 +54,7 @@ pipeline {
                 sh 'docker push hassan1999/docker-spring-boot'
              }
          }
-        }*/
+        }
 
           stage('DOCKER COMPOSE') {
                 steps {
