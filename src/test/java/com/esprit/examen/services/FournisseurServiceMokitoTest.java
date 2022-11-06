@@ -25,7 +25,7 @@ import com.esprit.examen.repositories.FournisseurRepository;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-// @SpringBootTest
+@SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class FournisseurServiceMokitoTest {
 
@@ -72,10 +72,10 @@ public class FournisseurServiceMokitoTest {
         assertEquals(Fournisseur.getLibelle(), newp.getLibelle());
         verify(pr).save(Fournisseur);
         log.info("Added ==> " + Fournisseur.toString());
-        System.out.println("addddddddddddd fournnnnnnnnnnnnn");
+        System.out.println("Fournisseur added With Mockito");
     }
-}
-   /* @DisplayName("Updating Fournisseur...!")
+
+    @DisplayName("Updating Fournisseur...!")
     @Test
     public void EditFournisseurTest() {
         Fournisseur pedit = new Fournisseur();
@@ -88,8 +88,8 @@ public class FournisseurServiceMokitoTest {
         pedit = psi.updateReglement(new_pedit);
         log.info("updated ==> " + pedit.toString());
         verify(pr).save(pedit);
-    }*/
-  /*  @DisplayName("Adding reglement...!")
+    }
+    @DisplayName("Adding reglement...!")
     @Test
     public void AddProductTest() {
         Produit produit = new Produit();
@@ -100,6 +100,7 @@ public class FournisseurServiceMokitoTest {
         verify(pr).save(produit);
         log.info("Added ==> " + produit.toString());
     }
+
     @DisplayName("Deleting product...!")
     @Test
     public void DeleteTest() {
@@ -111,4 +112,5 @@ public class FournisseurServiceMokitoTest {
         psi.deleteProduit(pid);
         verify(pr).deleteById(pid);
         log.info("Deleted ==> " + pid.toString());
-  }  }*/
+    }  
+}
