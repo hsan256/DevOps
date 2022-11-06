@@ -33,7 +33,6 @@ public class FournisseurServiceJunitTest {
         assertNull(f.getFactures());
 		assertSame("123", f.getCode());      
 		fs.deleteFournisseur(f.getIdFournisseur());
-        System.out.println("Add Fournisseur JUnit Tested ");
 
 	}
 	
