@@ -25,7 +25,6 @@ import com.esprit.examen.repositories.FournisseurRepository;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class FournisseurServiceMokitoTest {
 
@@ -72,7 +71,43 @@ public class FournisseurServiceMokitoTest {
         assertEquals(Fournisseur.getLibelle(), newp.getLibelle());
         verify(pr).save(Fournisseur);
         log.info("Added ==> " + Fournisseur.toString());
-        System.out.println("Fournisseur added With Mockito");
+        System.out.println("addddddddddddd fournnnnnnnnnnnnn");
     }
-
 }
+   /* @DisplayName("Updating Fournisseur...!")
+    @Test
+    public void EditFournisseurTest() {
+        Fournisseur pedit = new Fournisseur();
+        pedit.setIdFournisseur(3L);
+        pedit.set(false);
+        Reglement new_pedit = new Reglement();
+        new_pedit.setPayee(true);
+        Mockito.lenient().when(pr.findById(pedit.getIdReglement())).thenReturn(Optional.of(pedit));
+        //assertEquals(pedit, psi.updateProduit(new_pedit) );
+        pedit = psi.updateReglement(new_pedit);
+        log.info("updated ==> " + pedit.toString());
+        verify(pr).save(pedit);
+    }*/
+  /*  @DisplayName("Adding reglement...!")
+    @Test
+    public void AddProductTest() {
+        Produit produit = new Produit();
+        produit.setLibelleProduit("test");
+        Mockito.lenient().when(pr.save(produit)).thenReturn(produit);
+        Produit newp = psi.addProduit(produit);
+        assertEquals(produit.getLibelleProduit(), newp.getLibelleProduit());
+        verify(pr).save(produit);
+        log.info("Added ==> " + produit.toString());
+    }
+    @DisplayName("Deleting product...!")
+    @Test
+    public void DeleteTest() {
+        Produit p = new Produit();
+        p.setLibelleProduit("libelle");
+        p.setIdProduit((long) 3);
+        Long pid = p.getIdProduit();
+        Mockito.lenient().when(pr.findById(pid)).thenReturn(Optional.of(p));
+        psi.deleteProduit(pid);
+        verify(pr).deleteById(pid);
+        log.info("Deleted ==> " + pid.toString());
+  }  }*/
