@@ -30,24 +30,24 @@ pipeline {
               }
         }
 
-        // stage('Building Docker Image'){
-        //     steps{
-        //         script{
-        //             sh 'docker build -t hassan1999/docker-spring-boot .'
-        //         }
-        //     }
-        // }
+        stage('Building Docker Image'){
+            steps{
+                script{
+                    sh 'docker build -t hassan1999/docker-spring-boot .'
+                }
+            }
+        }
 
-        // stage('Push docker image'){
-        //  steps{
-        //      script{
-        //          withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-        //          sh 'docker login -u hassan1999 -p ${dockerhubpwd}'
-        //         }
-        //         sh 'docker push hassan1999/docker-spring-boot'
-        //      }
-        //  }
-        // }
+        stage('Push docker image'){
+         steps{
+             script{
+                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                 sh 'docker login -u hassan1999 -p ${dockerhubpwd}'
+                }
+                sh 'docker push hassan1999/docker-spring-boot'
+             }
+         }
+        }
 
           stage('DOCKER COMPOSE') {
                 steps {
@@ -67,11 +67,11 @@ pipeline {
                 }
           }
 
-        //   stage("NEXUS"){
-        //        steps{
-        //                sh 'mvn deploy'
-        //        }
-        //   }
+          stage("NEXUS"){
+               steps{
+                       sh 'mvn deploy'
+               }
+          }
 
     }
 
