@@ -48,23 +48,16 @@ public class Produit implements Serializable {
 	@JsonIgnore
 	private CategorieProduit categorieProduit;
 
-	public Produit(String codeProduit, String libelleProduit, float prix, Date dateCreation, Date dateDerniereModification) {
-		this.codeProduit = codeProduit;
-		this.libelleProduit = libelleProduit;
-		this.prix = prix;
+	public Produit(Date dateCreation, Date dateDerniereModification) {
+		super();
 		this.dateCreation = dateCreation;
 		this.dateDerniereModification = dateDerniereModification;
 	}
 
-	@Override
-	public String toString() {
-		return "Produit{" +
-				"idProduit=" + idProduit +
-				", codeProduit='" + codeProduit + '\'' +
-				", libelleProduit='" + libelleProduit + '\'' +
-				", prix=" + prix +
-				", dateCreation=" + dateCreation +
-				", dateDerniereModification=" + dateDerniereModification +
-				'}';
+	public Produit(String libelleProduit, float prix) {
+		super();
+		this.libelleProduit = libelleProduit;
+		this.prix = prix;
 	}
+
 }

@@ -18,26 +18,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.Builder;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Fournisseur implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Fournisseur(Long idFournisseur, String code, String libelle,
-			Set<Facture> factures) {
-		super();
-		this.idFournisseur = idFournisseur;
-		this.code = code;
-		this.libelle = libelle;
-		this.factures = factures;
-	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idFournisseur;
@@ -53,7 +43,7 @@ public class Fournisseur implements Serializable {
     private Set<SecteurActivite> secteurActivites;
     @OneToOne(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
     private DetailFournisseur detailFournisseur;
-	
+    
 
 	
 }
