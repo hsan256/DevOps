@@ -6,7 +6,7 @@ pipeline {
         stage('GIT') {
             steps {
                 echo 'Pulling From Github...'
-                git branch: 'main', 
+                git branch: 'hassan', 
                 credentialsId: 'jenkins', 
                 url: 'https://github.com/hsan256/DevOps.git'
             }
@@ -30,48 +30,48 @@ pipeline {
               }
         }
 
-        stage('Building Docker Image'){
-            steps{
-                script{
-                    sh 'docker build -t hassan1999/docker-spring-boot .'
-                }
-            }
-        }
+        // stage('Building Docker Image'){
+        //     steps{
+        //         script{
+        //             sh 'docker build -t hassan1999/docker-spring-boot .'
+        //         }
+        //     }
+        // }
 
-        stage('Push docker image'){
-         steps{
-             script{
-                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                 sh 'docker login -u hassan1999 -p ${dockerhubpwd}'
-                }
-                sh 'docker push hassan1999/docker-spring-boot'
-             }
-         }
-        }
+        // stage('Push docker image'){
+        //  steps{
+        //      script{
+        //          withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+        //          sh 'docker login -u hassan1999 -p ${dockerhubpwd}'
+        //         }
+        //         sh 'docker push hassan1999/docker-spring-boot'
+        //      }
+        //  }
+        // }
 
-          stage('DOCKER COMPOSE') {
-                steps {
-                        sh 'docker-compose up -d --build'
-                }
-          }
+        //   stage('DOCKER COMPOSE') {
+        //         steps {
+        //                 sh 'docker-compose up -d --build'
+        //         }
+        //   }
 
-          stage('MVN SONARQUBE'){
-                steps{
-                        sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=jenkins'
-                }
-          }
+        //   stage('MVN SONARQUBE'){
+        //         steps{
+        //                 sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=jenkins'
+        //         }
+        //   }
 
-          stage("Test JUnit / Mockito"){
-                steps {
-                        sh 'mvn test'
-                }
-          }
+        //   stage("Test JUnit / Mockito"){
+        //         steps {
+        //                 sh 'mvn test'
+        //         }
+        //   }
 
-          stage("NEXUS"){
-               steps{
-                       sh 'mvn deploy'
-               }
-          }
+        //   stage("NEXUS"){
+        //        steps{
+        //                sh 'mvn deploy'
+        //        }
+        //   }
 
     }
 
